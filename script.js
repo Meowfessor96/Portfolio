@@ -123,3 +123,6 @@ function resetGame() {
   // stay on game section
   document.getElementById('game').scrollIntoView({ behavior: 'auto' });
 }
+function openLink(url) {
+  window.open(url, '_blank'); // Opens the link in a new tab
+}
