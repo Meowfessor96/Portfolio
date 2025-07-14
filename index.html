@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mude Khusinadha Naik | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Intro Full Page -->
+  <section id="intro" class="intro-section full-page">
+    <h1 class="intro-title">Welcome to my portfolio website</h1>
+    <h2 class="intro-name">Mude Khusinadha Naik</h2>
+    <p class="intro-desc">I’m a B.Tech EE student at IIT Hyderabad passionate about electronics, coding, and creative solutions.</p>
+    <button id="scrollBtn">Scroll Down</button>
+  </section>
+
+  <!-- Game Section Full Page -->
+  <section id="game" class="game-section full-page">
+    <h2>My Programming Languages
+    </h2>
+    <div class="skills" id="skills">
+      <div class="skill-box" draggable="true" data-lang="C"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" /></div>
+      <div class="skill-box" draggable="true" data-lang="C++"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" /></div>
+      <div class="skill-box" draggable="true" data-lang="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /></div>
+      <div class="skill-box" draggable="true" data-lang="Java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" /></div>
+      <div class="skill-box" draggable="true" data-lang="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" /></div>
+    </div>
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div><div class="cell" data-index="1"></div><div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div><div class="cell" data-index="4"></div><div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div><div class="cell" data-index="7"></div><div class="cell" data-index="8"></div>
+    </div>
+    <button id="reset">Reset Game</button>
+  </section>
+
+  <!-- Projects Section Full Page -->
+  <section id="projects" class="projects-section full-page">
+    <h2>My Projects</h2>
+    <div class="cards">
+      <div class="card" onclick="openLink('https://github.com/yourusername/sar-adc')"><h3>5-bit SAR ADC</h3></div>
+      <div class="card" onclick="openLink('https://github.com/yourusername/fm-transmitter')"><h3>FM Transmitter</h3></div>
+      <div class="card" onclick="openLink('https://github.com/yourusername/noise-filter')"><h3>Digital Noise Filter</h3></div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button id="modal-close">OK</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>📞 9182912355 | 📧 ee23btech11042@iith.ac.in</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
