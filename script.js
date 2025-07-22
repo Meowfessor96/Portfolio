@@ -1,4 +1,5 @@
 // Scroll Button from Intro to About Section
+
 document.getElementById('scrollBtn').addEventListener('click', () => {
   document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
 });
