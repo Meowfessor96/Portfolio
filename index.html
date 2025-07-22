@@ -1,12 +1,15 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:ital,wght@1,400;1,600&family=Roboto+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
   <!-- Intro Full Page -->
   <section id="intro" class="intro-section full-page">
     <h1 class="intro-title">Welcome to my portfolio website</h1>
@@ -15,10 +18,32 @@
     <button id="scrollBtn">Scroll Down</button>
   </section>
 
+ <!-- About Me Section Full Page -->
+<section id="about" class="about-section full-page section-hidden">
+  <div class="about-container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          Hello! I’m Mude Khusinadha Naik, 
+          
+          I am a B.Tech Electrical Engineering student at IIT Hyderabad with hands-on experience in digital signal processing and software development using C, C++, Python, and JavaScript.
+
+          I’ve worked on projects ranging from frontend web applications to low-level programming, and I’m actively expanding my skills in areas like algorithmic problem solving and system design.
+
+          When I’m not coding, I enjoy listening to music, reading manga, and customizing apps to suit my style.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg?w=360" alt="Chibi Cat" />
+      </div>
+    </div>
+  </div>
+</section>
+
   <!-- Game Section Full Page -->
   <section id="game" class="game-section full-page">
-    <h2>My Programming Languages
-    </h2>
+    <h2>My Programming Languages</h2>
     <div class="skills" id="skills">
       <div class="skill-box" draggable="true" data-lang="C"><img src="https://img.icons8.com/?size=100&id=40670&format=png&color=000000" alt="C" /></div>
       <div class="skill-box" draggable="true" data-lang="C++"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" /></div>
@@ -35,12 +60,39 @@
   </section>
 
   <!-- Projects Section Full Page -->
-  <section id="projects" class="projects-section full-page">
+  <section id="projects" class="projects-section full-page section-hidden">
     <h2>My Projects</h2>
     <div class="cards">
-      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Digital-noise-filter')"><h3>Digital Noise Filter</h3></div>
-      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Wireless-solar-mobile-charger')"><h3>Wireless Solar Mobile Charger</h3></div>
-      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/ADC')"><h3>ADC</h3></div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/5-bit-SAR-ADC')">
+        <h3>5-bit SAR ADC</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/FM-Audio-Transmitter')">
+        <h3>FM Audio Transmitter</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Audio-Amplifier')">
+        <h3>Audio Amplifier with Volume Control</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/7-segment-Digital-Clock')">
+        <h3>7-segment Digital Clock</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Mobile-DC-Charger')">
+        <h3>Mobile DC Charger (AC to DC Rectifier)</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Digital-noise-filter')">
+        <h3>Digital Noise Filter (NLMS Algorithm)</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Wireless-solar-mobile-charger')">
+        <h3>Solar Wireless Mobile Charger</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Project8')">
+        <h3>Project 8</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Project9')">
+        <h3>Project 9</h3>
+      </div>
+      <div class="card" onclick="openLink('https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Project10')">
+        <h3>Project 10</h3>
+      </div>
     </div>
   </section>
 
@@ -55,6 +107,7 @@
   <footer>
     <p>📞 9182912355 | 📧 ee23btech11042@iith.ac.in</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

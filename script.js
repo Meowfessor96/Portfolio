@@ -1,6 +1,6 @@
-// Scroll Button
+// Scroll Button from Intro to About Section
 document.getElementById('scrollBtn').addEventListener('click', () => {
-  document.getElementById('game').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
 });
 
 const skillsContainer = document.getElementById('skills');
@@ -9,7 +9,7 @@ let board = Array(9).fill('');
 let draggedElem = null;
 const cells = document.querySelectorAll('.cell');
 
-// Drag and Drop
+// Drag and Drop for Skills (Tic Tac Toe)
 document.querySelectorAll('.skill-box').forEach(s => {
   s.addEventListener('dragstart', e => {
     draggedElem = s;
@@ -36,7 +36,11 @@ cells.forEach(cell => {
 });
 
 function aiMove() {
-  const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const wins = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
   for (let i = 0; i < 9; i++) {
     if (!board[i]) {
       board[i] = 'O';
@@ -69,7 +73,11 @@ function renderMove(idx, player, showWin = false) {
 }
 
 function checkWin(p) {
-  const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const wins = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
   return wins.some(c => c.every(i => board[i] === p));
 }
 
@@ -88,7 +96,6 @@ function resetGame() {
   board.fill('');
   cells.forEach(c => {
     c.innerHTML = '';
-    c.classList.remove('highlight');
   });
   skillsContainer.innerHTML = initialSkillsHTML;
   document.querySelectorAll('.skill-box').forEach(s => {
@@ -103,3 +110,19 @@ function resetGame() {
 function openLink(url) {
   window.open(url, '_blank');
 }
+
+
+// Scroll-triggered fade-in animations
+const sections = document.querySelectorAll('.section-hidden');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('section-visible');
+      entry.target.classList.remove('section-hidden');
+    }
+  });
+}, { threshold: 0.1 });
+
+sections.forEach(section => {
+  observer.observe(section);
+});
