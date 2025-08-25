@@ -1,5 +1,4 @@
 // Scroll Button from Intro to About Section
-
 document.getElementById('scrollBtn').addEventListener('click', () => {
   document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
 });
@@ -31,7 +30,10 @@ cells.forEach(cell => {
     cell.innerHTML = data + '<span class="x-mark">X</span>';
     draggedElem.remove();
     draggedElem = null;
+
     if (checkWin('X')) return showModal('Congratulations, you win!');
+    if (board.every(v => v)) return showModal("It's a draw!");
+
     setTimeout(aiMove, 300);
   });
 });
@@ -42,6 +44,8 @@ function aiMove() {
     [0,3,6],[1,4,7],[2,5,8],
     [0,4,8],[2,4,6]
   ];
+
+  // Try to win
   for (let i = 0; i < 9; i++) {
     if (!board[i]) {
       board[i] = 'O';
@@ -49,6 +53,8 @@ function aiMove() {
       board[i] = '';
     }
   }
+
+  // Try to block player
   for (let i = 0; i < 9; i++) {
     if (!board[i]) {
       board[i] = 'X';
@@ -59,17 +65,20 @@ function aiMove() {
       board[i] = '';
     }
   }
+
+  // Random move
   const avail = board.map((v, i) => v === '' ? i : null).filter(i => i !== null);
   const idx = avail[Math.floor(Math.random() * avail.length)];
   board[idx] = 'O';
   renderMove(idx, 'O');
+
   if (checkWin('O')) return showModal('AI wins!');
   if (board.every(v => v)) return showModal("It's a draw!");
 }
 
 function renderMove(idx, player, showWin = false) {
   const cell = cells[idx];
-  cell.innerHTML = `<span class="o-mark">${player}</span>`;
+  cell.innerHTML = `<span class="${player === 'O' ? 'o-mark' : 'x-mark'}">${player}</span>`;
   if (showWin) showModal('AI wins!');
 }
 
@@ -111,7 +120,6 @@ function resetGame() {
 function openLink(url) {
   window.open(url, '_blank');
 }
-
 
 // Scroll-triggered fade-in animations
 const sections = document.querySelectorAll('.section-hidden');
