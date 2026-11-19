@@ -2,6 +2,23 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
 const sections = [...document.querySelectorAll('[data-section]')]
 const sectionLinks = [...document.querySelectorAll('.topbar a[href^="#"]')]
 const progress = document.querySelector('.scroll-progress')
+const motionToggle = document.querySelector('.motion-toggle')
+const motionKey = 'portfolio-motion'
+const transitionsEnabled = () => document.documentElement.dataset.motion !== 'off'
+
+function setMotion(enabled) {
+  document.documentElement.dataset.motion = enabled ? 'on' : 'off'
+  motionToggle.setAttribute('aria-pressed', String(enabled))
+}
+
+try { setMotion(localStorage.getItem(motionKey) !== 'off') } catch { setMotion(true) }
+motionToggle.hidden = false
+motionToggle.addEventListener('click', () => {
+  setMotion(!transitionsEnabled())
+  try { localStorage.setItem(motionKey, document.documentElement.dataset.motion) } catch {}
+  document.dispatchEvent(new Event('portfolio-motionchange'))
+})
+
 let scrollFrame = 0
 
 function updateScroll() {
@@ -26,22 +43,38 @@ function cancelNavigation() {
   navigationFrame = 0
 }
 
-function animateTo(top) {
+function navigateTo(target, hash) {
   cancelNavigation()
   const start = window.scrollY
+  const top = Math.round(target.getBoundingClientRect().top + start)
   const distance = top - start
-  if (reducedMotion.matches || Math.abs(distance) < 2) {
+  if (location.hash !== hash) history.pushState(null, '', hash)
+
+  function arrive() {
     window.scrollTo({ top, behavior: 'instant' })
+    target.tabIndex = -1
+    target.focus({ preventScroll: true })
+  }
+
+  if (!transitionsEnabled() || Math.abs(distance) < 2) {
+    arrive()
     return
   }
 
-  const duration = Math.min(1050, Math.max(640, 410 + Math.abs(distance) * .27))
-  const started = performance.now()
+  const duration = Math.min(1850, Math.max(1120, 780 + Math.abs(distance) * .42))
+  let started
   function step(now) {
+    started ??= now
     const elapsed = Math.min(1, (now - started) / duration)
+    if (elapsed === 1 || !transitionsEnabled()) {
+      navigationFrame = 0
+      arrive()
+      return
+    }
+
     const eased = elapsed * elapsed * (3 - 2 * elapsed)
     window.scrollTo({ top: start + distance * eased, behavior: 'instant' })
-    navigationFrame = elapsed < 1 ? requestAnimationFrame(step) : 0
+    navigationFrame = requestAnimationFrame(step)
   }
   navigationFrame = requestAnimationFrame(step)
 }
@@ -60,10 +93,7 @@ document.addEventListener('click', event => {
   const target = sections.find(section => '#' + section.id === link?.hash)
   if (!target) return
   event.preventDefault()
-  if (location.hash !== link.hash) history.pushState(null, '', link.hash)
-  target.tabIndex = -1
-  target.focus({ preventScroll: true })
-  animateTo(target.offsetTop)
+  navigateTo(target, link.hash)
 })
 
 addEventListener('scroll', queueScrollUpdate, { passive: true })
@@ -124,7 +154,7 @@ if (drawing) {
   function syncMotion() {
     cancelAnimationFrame(animation)
     animation = 0
-    if (visible && !document.hidden && !reducedMotion.matches) animation = requestAnimationFrame(tick)
+    if (visible && !document.hidden && !reducedMotion.matches && transitionsEnabled()) animation = requestAnimationFrame(tick)
     else draw(0)
   }
 
@@ -155,5 +185,6 @@ if (drawing) {
   }).observe(hero)
   reducedMotion.addEventListener('change', syncMotion)
   document.addEventListener('visibilitychange', syncMotion)
+  document.addEventListener('portfolio-motionchange', syncMotion)
   resizeSignal()
 }

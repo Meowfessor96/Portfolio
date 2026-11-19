@@ -4,7 +4,8 @@ const detail = stage.querySelector('.project-detail')
 const catalog = document.querySelector('.project-catalog')
 const instructions = document.querySelector('#project-instructions')
 const topicInstructions = instructions.textContent
-const motion = matchMedia('(prefers-reduced-motion: reduce)')
+const detailDuration = 1050
+let detailAnimation = null
 
 function projectTitle(card) {
   const title = card.querySelector('h4, strong').cloneNode(true)
@@ -63,13 +64,47 @@ function buttonLabel(item, count) {
   return label
 }
 
+function resizeDetail(from, to, complete = () => {}) {
+  detailAnimation?.cancel()
+  detailAnimation = null
+  detail.style.height = to + 'px'
+  if (!transitionsEnabled() || Math.abs(to - from) < 1) {
+    detail.style.height = ''
+    complete()
+    return
+  }
+
+  const animation = detail.animate([{ height: from + 'px' }, { height: to + 'px' }], {
+    duration: detailDuration,
+    easing: 'cubic-bezier(.25, .72, .22, 1)'
+  })
+  detailAnimation = animation
+  animation.onfinish = () => {
+    if (detailAnimation !== animation) return
+    detailAnimation = null
+    detail.style.height = ''
+    complete()
+  }
+}
+
+document.addEventListener('portfolio-motionchange', () => {
+  if (!transitionsEnabled()) detailAnimation?.finish()
+})
+
 function clearSelection() {
-  detail.hidden = true
+  if (detail.hidden) return
+  const from = detail.getBoundingClientRect().height
+  detail.inert = true
   stage.classList.remove('has-detail')
-  detail.replaceChildren()
+  resizeDetail(from, 0, () => {
+    detail.hidden = true
+    detail.replaceChildren()
+  })
 }
 
 function showProject(item, button) {
+  if (button.getAttribute('aria-pressed') === 'true') return
+  const from = detail.hidden ? 0 : detail.getBoundingClientRect().height
   for (const piece of layer.querySelectorAll('.wheel-slice')) piece.setAttribute('aria-pressed', String(piece === button))
   const panel = document.createElement('article')
   panel.className = 'project-info'
@@ -90,7 +125,10 @@ function showProject(item, button) {
   }
   detail.replaceChildren(panel)
   detail.hidden = false
+  detail.inert = false
+  const targetHeight = panel.offsetHeight
   stage.classList.add('has-detail')
+  resizeDetail(from, targetHeight)
 }
 
 function dragToCenter(button, topic, hub) {
@@ -194,7 +232,7 @@ function showWheel(topic, restoreFocus = false) {
   else if (restoreFocus) buttons[topics.indexOf(restoreFocus)]?.focus({ preventScroll: true })
   if (!previous) return
   previous.setAttribute('aria-hidden', 'true')
-  if (motion.matches) previous.remove()
+  if (!transitionsEnabled()) previous.remove()
   else {
     const outgoing = previous.animate([{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(.91)' }], { duration: 240, easing: 'ease-in', fill: 'forwards' })
     outgoing.finished.then(() => previous.remove())
