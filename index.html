@@ -1,595 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mude Khusinadha Naik | Portfolio</title>
-  <meta name="description" content="Electrical engineering and software projects by Mude Khusinadha Naik.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Electrical engineering and software projects by Mude Khusinadha Naik, B.Tech student at IIT Hyderabad.">
+  <meta name="theme-color" content="#101f1c">
+  <title>Mude Khusinadha Naik | Electrical Engineering &amp; Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="portfolio.css">
+  <script src="site.js" defer></script>
   <script src="project-wheel.js" defer></script>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Feather icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <!-- Vanta background -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Space Grotesk', sans-serif; }
-    .gradient-text {
-      background: linear-gradient(90deg,#3b82f6,#8b5cf6);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .skill-icon { transition: all .28s ease; }
-    .skill-icon:hover { transform: scale(1.12) rotate(4deg); }
-    .project-card {
-      transition: all .28s ease;
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(8px);
-    }
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px -18px rgba(59,130,246,.45);
-    }
-    #vanta-bg { position: fixed; inset:0; z-index:-1; }
-    /* expandable skill card */
-    .skill-panel { transition: all .25s ease; overflow: hidden; }
-    .skill-toggle { cursor: pointer; }
-    /* ensure each section fills viewport (page-like) */
-    section.min-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 3.5rem 1rem; }
-    /* nice small animation for entry */
-    .fade-up { transform: translateY(8px); opacity: 0; transition: all .45s ease; }
-    .fade-up.show { transform: translateY(0); opacity: 1; }
-    /* clickable project styling */
-    .proj-click { cursor: pointer; }
-  </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
-
-  <!-- Vanta background target -->
-  <div id="vanta-bg"></div>
-
-  <header class="portfolio-header">
-    <nav class="portfolio-nav" aria-label="Main navigation">
-      <a class="portfolio-name" href="#hero">Mude Khusinadha Naik</a>
-      <div class="portfolio-nav-links">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="frame topbar" aria-label="Main navigation">
+      <a class="wordmark" href="#hero" aria-label="Mude Khusinadha Naik, home"><span class="brand-mark" aria-hidden="true"></span><span>Mude K. Naik</span></a>
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <a href="https://github.com/Meowfessor96">GitHub ↗</a>
+        <a class="nav-github" href="https://github.com/Meowfessor96">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
+    <span class="scroll-progress" aria-hidden="true"></span>
   </header>
 
-  <section id="hero" class="portfolio-hero" aria-labelledby="hero-title">
-    <div>
-      <p class="hero-role">Electrical Engineering · IIT Hyderabad</p>
-      <h1 id="hero-title">Mude Khusinadha Naik</h1>
-      <p class="hero-description">I build software and electronics projects across local AI, signal processing, and circuit design.</p>
-      <div class="hero-links">
-        <a href="#projects" class="hero-primary">Explore projects</a>
-        <a href="#about" class="hero-secondary">About me</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT (Page 2) -->
-  <section id="about" class="min-page bg-gradient-to-br from-gray-900 to-blue-900/20 px-6">
-  <div class="max-w-6xl mx-auto w-full">
-    <div class="text-center mb-8">
-      <h2 class="text-4xl sm:text-5xl font-bold gradient-text">About Me</h2>
-      <div class="w-28 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded mt-4"></div>
-    </div>
-
-    <!-- IMPORTANT: items-stretch makes right column match left column height -->
-    <div class="lg:flex gap-16 items-stretch">
-      <!-- left: About text (unchanged) -->
-      <div class="lg:w-3/5 bg-gray-800/60 p-10 rounded-2xl border border-gray-700/50 backdrop-blur-sm fade-up show">
-        <p class="text-lg text-white/90 mb-4">
-          Hello! I’m <span class="text-blue-400 font-medium">Mude Khusinadha Naik</span>,
-        </p>
-
-        <p class="text-lg text-white/90 mb-4">
-          I am a B.Tech Electrical Engineering student at IIT Hyderabad with hands-on experience in digital signal processing and software development using C, C++, Python, and JavaScript.
-        </p>
-
-        <p class="text-lg text-white/90 mb-4">
-          I’ve worked on projects ranging from frontend web applications to low-level programming, and I’m actively expanding my skills in areas like algorithmic problem solving and system design.
-        </p>
-
-        <p class="text-lg text-white/90">
-          When I’m not coding, I enjoy listening to music, reading manga, and customizing apps to suit my style.
-        </p>
-      </div>
-
-      <!-- right: neon concentric rings animation (height matches left card) -->
-      <div class="lg:w-2/5 mt-8 lg:mt-0">
-        <div class="neon-overlay-container rounded-2xl relative overflow-visible">
-          <div class="neon-scene" aria-hidden="true">
-            <div class="rings">
-              <div class="ring r1">
-                <span class="glint g1"></span>
-                <span class="glint g2"></span>
-              </div>
-              <div class="ring r2">
-                <span class="glint g3"></span>
-                <span class="glint g4"></span>
-              </div>
-              <div class="ring r3">
-                <span class="glint g5"></span>
-                <span class="glint g6"></span>
-              </div>
-
-              <!-- radial background haze for depth (subtle) -->
-              <div class="haze"></div>
-            </div>
+  <main id="main">
+    <section id="hero" class="page hero" data-section aria-labelledby="hero-title">
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+      <div class="frame hero-layout">
+        <div class="hero-content">
+          <p class="section-label">Electrical Engineering · IIT Hyderabad</p>
+          <h1 id="hero-title">Mude<br>Khusinadha <em>Naik</em></h1>
+          <p class="hero-description">I build circuits and software, from filtering noise in a signal to making course information easier to find.</p>
+          <div class="hero-actions">
+            <a class="button button-bright" href="#projects">Explore projects <span aria-hidden="true">↓</span></a>
+            <a class="button button-dark" href="#about">About me <span aria-hidden="true">↘</span></a>
           </div>
+        </div>
+        <div class="signal-art" aria-hidden="true">
+          <div class="signal-glow"></div>
+          <canvas id="signal-canvas"></canvas>
+        </div>
+        <a class="scroll-link" href="#about"><span aria-hidden="true">↓</span> Scroll to explore</a>
+      </div>
+    </section>
+
+    <section id="about" class="page about" data-section aria-labelledby="about-title">
+      <div class="frame about-layout reveal">
+        <div class="about-copy">
+          <p class="section-label">About me</p>
+          <h2 id="about-title">I like figuring out how things work.</h2>
+          <p>I’m a B.Tech Electrical Engineering student at IIT Hyderabad. I’m drawn to problems where I can follow an idea from a circuit or an algorithm to an experiment I can run and understand.</p>
+          <p>My projects span analog circuits, adaptive filtering, and software for students. I’m interested in what carries across those areas: breaking a problem down, testing each part, and making the result easy for someone else to use.</p>
+          <p>Outside coursework, I enjoy music, manga, and tinkering with apps to make them work the way I want.</p>
+          <a class="inline-link" href="#projects">See what I’ve built <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="about-notes">
+          <article>
+            <h3>Circuits</h3>
+            <p>I’ve worked on a successive-approximation ADC, an FM transmitter, and an audio amplifier with volume control.</p>
+          </article>
+          <article>
+            <h3>Signal processing</h3>
+            <p>My adaptive filter uses the normalized least mean squares algorithm to reduce noise in a digital signal.</p>
+          </article>
+          <article>
+            <h3>Software</h3>
+            <p>My academic assistant uses department documents and timetables to put the source next to the answer.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <style>
-    /* ----------------- configurable variables ----------------- */
-    :root{
-      --neon-main: #08b3ff;        /* principal neon color */
-      --neon-accent:#7be4ff;       /* lighter accent */
-      --neon-deep: rgba(8,179,255,0.12);
-      --ring-edge: 2.4px;          /* ring stroke thickness */
-      --ring-glow-outer: 32px;
-      --ring-glow-mid: 18px;
-      --ring-glow-inner: 10px;
-    }
-
-    /* container must fill left card height (flex parent uses items-stretch) */
-    .neon-overlay-container{
-      height: 100%;           /* stretch to match left content height */
-      min-height: 260px;
-      position: relative;
-      background: transparent;
-      box-shadow: none;
-      pointer-events: none;
-      overflow: visible;
-      padding: 14px; /* small padding so ring edges don't touch corners */
-    }
-
-    .neon-scene{
-      position: absolute;
-      inset: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1200px;
-      -webkit-perspective: 1200px;
-      overflow: visible;
-    }
-
-    /* rings container adapts to available height */
-    .rings{
-      --size: min(320px, calc(100% - 28px)); /* responsive cap */
-      width: var(--size);
-      height: var(--size);
-      position: relative;
-      transform-style: preserve-3d;
-      transform-origin: center;
-      will-change: transform;
-    }
-
-    /* background haze (soft radial glow behind rings) */
-    .haze {
-      position: absolute;
-      left: 50%; top: 50%;
-      width: 140%;
-      height: 140%;
-      transform: translate(-50%,-50%);
-      background: radial-gradient(closest-side, rgba(8,179,255,0.06) 0%, rgba(8,179,255,0.02) 30%, transparent 60%);
-      filter: blur(24px);
-      pointer-events: none;
-      mix-blend-mode: screen;
-      z-index: 0;
-    }
-
-    /* common ring styling: an outlined circular track with strong neon glow */
-    .ring {
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%,-50%);
-      border-radius: 50%;
-      box-sizing: border-box;
-      background: transparent;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* sizes (outer, mid, inner) */
-    .r1 { width: 100%; height: 100%; border: var(--ring-edge) solid rgba(255,255,255,0.03); }
-    .r2 { width: 66%; height: 66%; border: calc(var(--ring-edge) * 0.95) solid rgba(255,255,255,0.03); }
-    .r3 { width: 38%; height: 38%; border: calc(var(--ring-edge) * 0.85) solid rgba(255,255,255,0.03); }
-
-    /* apply neon gradient stroke via pseudo-element and heavy glows */
-    .ring::before{
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      pointer-events: none;
-      background:
-        conic-gradient(from 0deg, var(--neon-accent), var(--neon-main), rgba(255,255,255,0.95), var(--neon-accent));
-      -webkit-mask: radial-gradient(farthest-side, transparent 68%, black 69%); /* keep narrow rim */
-      mask: radial-gradient(farthest-side, transparent 68%, black 69%);
-      filter: blur(0.3px);
-      mix-blend-mode: screen;
-      opacity: 0.98;
-      transform: scale(1);
-    }
-
-    /* outer glow for each ring (different intensity per ring) */
-    .r1::after, .r2::after, .r3::after {
-      content: "";
-      position: absolute;
-      inset: -6%;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
-      mix-blend-mode: screen;
-    }
-    .r1::after { box-shadow: 0 0 var(--ring-glow-outer) var(--neon-deep); opacity: 0.9; }
-    .r2::after { box-shadow: 0 0 var(--ring-glow-mid) var(--neon-deep); opacity: 0.85; }
-    .r3::after { box-shadow: 0 0 var(--ring-glow-inner) var(--neon-deep); opacity: 0.8; }
-
-    /* GLINTS (small bright dots that orbit each ring) */
-    .glint {
-      position: absolute;
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      left: 50%; top: 50%;
-      transform-origin: center;
-      transform: translate(-50%,-50%) translateX(calc(var(--orbit, 140px) / 2));
-      background: radial-gradient(circle at 30% 30%, #fff 0%, var(--neon-accent) 30%, var(--neon-main) 60%);
-      box-shadow:
-        0 0 8px #fff,
-        0 0 18px var(--neon-main),
-        0 0 40px rgba(8,179,255,0.18);
-      mix-blend-mode: screen;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* place specific glints with different starting offsets and orbit radii */
-    .r1 .g1 { --angle: 20deg;  transform: translate(-50%,-50%) rotate(var(--angle)) translateX(calc(50%)); animation: orbit1 6.8s linear infinite; }
-    .r1 .g2 { --angle: 200deg; transform: translate(-50%,-50%) rotate(var(--angle)) translateX(calc(50%)); animation: orbit1 7.6s linear infinite reverse; }
-
-    .r2 .g3 { --angle: 80deg;  transform: translate(-50%,-50%) rotate(var(--angle)) translateX(calc(33%)); animation: orbit2 5.6s linear infinite; }
-    .r2 .g4 { --angle: 300deg; transform: translate(-50%,-50%) rotate(var(--angle)) translateX(calc(33%)); animation: orbit2 6.4s linear infinite reverse; }
-
-    .r3 .g5 { --angle: 140deg; transform: translate(-50%,-50%) rotate(var(--angle)) translateX(calc(19%)); animation: orbit3 4.6s linear infinite; width:8px;height:8px; }
-    .r3 .g6 { --angle: 330deg; transform: translate(-50%,-50%) rotate(var(--angle)) translateX(calc(19%)); animation: orbit3 5.2s linear infinite reverse; width:8px;height:8px; }
-
-    /* orbit animations: rotate the parent rotation so glints orbit around ring */
-    @keyframes orbit1 {
-      from { transform: translate(-50%,-50%) rotate(0deg) translateX(50%); }
-      to   { transform: translate(-50%,-50%) rotate(360deg) translateX(50%); }
-    }
-    @keyframes orbit2 {
-      from { transform: translate(-50%,-50%) rotate(0deg) translateX(33%); }
-      to   { transform: translate(-50%,-50%) rotate(-360deg) translateX(33%); }
-    }
-    @keyframes orbit3 {
-      from { transform: translate(-50%,-50%) rotate(0deg) translateX(19%); }
-      to   { transform: translate(-50%,-50%) rotate(360deg) translateX(19%); }
-    }
-
-    /* whole-ring 3D rotations (each ring spins on different axis for depth) */
-    .r1 { transform: translate(-50%,-50%) rotateX(6deg) rotateY(0deg) rotateZ(0deg); animation: ringSpin1 22s linear infinite; }
-    .r2 { transform: translate(-50%,-50%) rotateX(12deg) rotateY(6deg) rotateZ(0deg); animation: ringSpin2 16s linear infinite reverse; }
-    .r3 { transform: translate(-50%,-50%) rotateX(20deg) rotateY(-12deg) rotateZ(0deg); animation: ringSpin3 12s linear infinite; }
-
-    @keyframes ringSpin1 {
-      0% { transform: translate(-50%,-50%) rotateX(6deg) rotateY(0deg) rotateZ(0deg); }
-      50% { transform: translate(-50%,-50%) rotateX(200deg) rotateY(120deg) rotateZ(60deg); }
-      100% { transform: translate(-50%,-50%) rotateX(366deg) rotateY(240deg) rotateZ(120deg); }
-    }
-    @keyframes ringSpin2 {
-      0% { transform: translate(-50%,-50%) rotateX(12deg) rotateY(6deg) rotateZ(0deg); }
-      50% { transform: translate(-50%,-50%) rotateX(160deg) rotateY(190deg) rotateZ(-40deg); }
-      100% { transform: translate(-50%,-50%) rotateX(372deg) rotateY(376deg) rotateZ(-20deg); }
-    }
-    @keyframes ringSpin3 {
-      0% { transform: translate(-50%,-50%) rotateX(20deg) rotateY(-12deg) rotateZ(0deg); }
-      50% { transform: translate(-50%,-50%) rotateX(260deg) rotateY(90deg) rotateZ(40deg); }
-      100% { transform: translate(-50%,-50%) rotateX(380deg) rotateY(360deg) rotateZ(80deg); }
-    }
-
-    /* tiny breathing pulse on the inner gradient to feel alive */
-    .ring::before { animation: rimPulse 6.5s ease-in-out infinite; }
-    @keyframes rimPulse {
-      0% { filter: brightness(1); opacity:1; transform: scale(1); }
-      50% { filter: brightness(1.12); opacity:0.98; transform: scale(1.01); }
-      100% { filter: brightness(1); opacity:1; transform: scale(1); }
-    }
-
-    /* ensure nothing clips */
-    .neon-overlay-container, .neon-scene, .rings, .ring, .glint, .haze { overflow: visible; }
-
-    /* responsive adjustments */
-    @media (max-width: 1024px){
-      .rings { --size: min(260px, calc(100% - 28px)); }
-      :root { --ring-edge: 2px; --ring-glow-outer: 26px; }
-    }
-    @media (max-width: 640px){
-      .rings { --size: min(200px, calc(100% - 28px)); }
-      :root { --ring-edge: 1.6px; --ring-glow-outer: 20px; }
-    }
-  </style>
-</section>
-
-
-  <!-- TECHNICAL SKILLS (Page 3) -->
-  <section id="skills" class="min-page px-6">
-    <div class="max-w-6xl mx-auto w-full">
-      <div class="text-center mb-8">
-        <h2 class="text-4xl sm:text-5xl font-bold gradient-text">Technical Skills</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded mt-4"></div>
-      </div>
-
-      <!-- skill grid with expandable 'tree' style panels -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="cpu" class="w-6 h-6 text-blue-400"></i>
-                <h3 class="text-lg font-semibold">Digital Signal Processing</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">MATLAB, NLMS, filter design</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-dsp')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-dsp" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Adaptive filters (NLMS) — noise cancellation</li>
-              <li>FFT analysis & windowing</li>
-              <li>FPGA prototyping using Verilog</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="code" class="w-6 h-6 text-purple-400"></i>
-                <h3 class="text-lg font-semibold">Embedded & Firmware</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">C/C++, low-level programming</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-embed')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-embed" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Microcontroller peripherals & ISRs</li>
-              <li>Driver & communication protocols (SPI, I2C, UART)</li>
-              <li>Memory/concurrency awareness for embedded systems</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="activity" class="w-6 h-6 text-green-400"></i>
-                <h3 class="text-lg font-semibold">Circuit Design & Simulation</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">LTSpice, ADCs, amplifier design</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-circ')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-circ" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Analog front-end (filters, op-amps)</li>
-              <li>Power conversion design (AC/DC rectifiers)</li>
-              <li>PCB prototyping & layout considerations</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="database" class="w-6 h-6 text-yellow-400"></i>
-                <h3 class="text-lg font-semibold">Machine Learning & Tools</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">Python, KNN, Logistic Regression</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-ml')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-ml" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Supervised learning (KNN, logistic regression)</li>
-              <li>Data preprocessing & evaluation metrics</li>
-              <li>Small neural network experiments</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="cpu" class="w-6 h-6 text-red-400"></i>
-                <h3 class="text-lg font-semibold">Programming & Algorithms</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">C/C++, problem solving</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-algo')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-algo" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Data structures (trees, hash tables)</li>
-              <li>Competitive programming (Codeforces)</li>
-              <li>Algorithmic complexity & proofs</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="globe" class="w-6 h-6 text-indigo-400"></i>
-                <h3 class="text-lg font-semibold">Tools & Platforms</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">MATLAB, LTSpice, Solid Edge</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-tools')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-tools" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Simulation & schematic capture</li>
-              <li>Version control & GitHub workflow</li>
-              <li>Documentation & reproducible experiments</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="layers" class="w-6 h-6 text-pink-400"></i>
-                <h3 class="text-lg font-semibold">System Design</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">Integrating hardware & software</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-sys')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-sys" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Embedded to cloud pipelines</li>
-              <li>Sensor data acquisition & processing</li>
-              <li>Prototype -> test -> iterate</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="p-6 rounded-2xl bg-gray-800/60 border border-gray-700/50 skill-card">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <i data-feather="award" class="w-6 h-6 text-yellow-400"></i>
-                <h3 class="text-lg font-semibold">Soft Skills</h3>
-              </div>
-              <p class="text-sm text-gray-300 mb-3">Collaboration, Documentation</p>
-            </div>
-            <button class="skill-toggle text-gray-300" aria-expanded="false" onclick="togglePanel(this, 'panel-soft')">
-              <i data-feather="chevron-down" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div id="panel-soft" class="skill-panel mt-3 max-h-0">
-            <ul class="text-sm text-gray-300 pl-4 space-y-2">
-              <li>Team collaboration & mentoring</li>
-              <li>Clear documentation & reproducible steps</li>
-              <li>Time management & iteration</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIC-TAC-TOE (Page 4) -->
-  <section id="game" class="min-page px-6 bg-gradient-to-br from-gray-900 to-indigo-900/20">
-    <div class="max-w-4xl mx-auto text-center py-12">
-      <h2 class="text-4xl sm:text-5xl font-bold gradient-text mb-6">Code Challenge — Tic-Tac-Toe</h2>
-      <p class="text-gray-300 mb-8">Drag the language icon into the grid to play (you are X). Beat the AI!</p>
-
-      <div class="flex justify-center mb-8">
-        <!-- draggable skill boxes (game uses these as 'X' icons) -->
-        <div id="game-skills" class="grid grid-cols-5 gap-4 w-full max-w-xl">
-          <div class="skill-box rounded-lg p-4 bg-gray-800 border border-gray-700 hover:border-blue-500 transition cursor-grab" draggable="true" data-lang="C">
-            <img src="https://img.icons8.com/?size=100&id=40670&format=png&color=ffffff" alt="C" class="w-8 h-8 mx-auto">
-          </div>
-          <div class="skill-box rounded-lg p-4 bg-gray-800 border border-gray-700 hover:border-blue-500 transition cursor-grab" draggable="true" data-lang="C++">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="w-8 h-8 mx-auto">
-          </div>
-          <div class="skill-box rounded-lg p-4 bg-gray-800 border border-gray-700 hover:border-blue-500 transition cursor-grab" draggable="true" data-lang="Python">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-8 h-8 mx-auto">
-          </div>
-          <div class="skill-box rounded-lg p-4 bg-gray-800 border border-gray-700 hover:border-blue-500 transition cursor-grab" draggable="true" data-lang="Java">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-8 h-8 mx-auto">
-          </div>
-          <div class="skill-box rounded-lg p-4 bg-gray-800 border border-gray-700 hover:border-blue-500 transition cursor-grab" draggable="true" data-lang="JavaScript">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" class="w-8 h-8 mx-auto">
-          </div>
-        </div>
-      </div>
-
-      <!-- board -->
-      <div id="game-board" class="board grid grid-cols-3 gap-3 max-w-xs mx-auto mb-6">
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="0"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="1"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="2"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="3"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="4"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="5"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="6"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="7"></div>
-        <div class="cell w-24 h-24 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center hover:border-blue-500 transition" data-index="8"></div>
-      </div>
-
-      <div class="flex justify-center gap-4">
-        <button id="game-reset" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white">Reset Game</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" aria-labelledby="projects-heading">
-    <div class="projects-layout">
-      <h2 class="projects-heading" id="projects-heading">Projects</h2>
-      <p class="projects-intro">Choose a topic to see the projects.</p>
+  <section id="projects" class="page projects" data-section aria-labelledby="projects-heading">
+    <div class="frame projects-layout reveal">
+      <div class="section-heading"><h2 id="projects-heading">Projects</h2><p>Pick a topic on the wheel to browse the projects.</p></div>
       <div class="project-browser">
         <div class="project-wheel" role="group" aria-label="Project topics" hidden>
           <button type="button" class="wheel-topic" data-topic="Local AI" aria-controls="projects-rag" aria-pressed="false"><span>Local AI<small>1 project</small></span></button>
-          <button type="button" class="wheel-topic" data-topic="ML" aria-controls="projects-ml" aria-pressed="false"><span>ML<small>2 projects</small></span></button>
+          <button type="button" class="wheel-topic" data-topic="Machine learning" aria-controls="projects-ml" aria-pressed="false"><span>ML<small>2 projects</small></span></button>
           <button type="button" class="wheel-topic" data-topic="Circuits" aria-controls="projects-circuits" aria-pressed="false"><span>Circuits<small>6 projects</small></span></button>
-          <button type="button" class="wheel-topic" data-topic="DSP" aria-controls="projects-dsp" aria-pressed="false"><span>DSP<small>1 project</small></span></button>
+          <button type="button" class="wheel-topic" data-topic="Signal processing" aria-controls="projects-dsp" aria-pressed="false"><span>DSP<small>1 project</small></span></button>
           <div class="wheel-center" aria-live="polite"><strong></strong><small></small></div>
         </div>
         <div>
           <section class="project-panel" id="projects-rag" aria-labelledby="title-rag">
             <h3 id="title-rag">Local AI</h3>
             <div class="project-entries">
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/iith-ee-academic-assistant" target="_blank" rel="noopener">
-                <strong>IIT Hyderabad EE Academic Assistant <span aria-hidden="true">↗</span></strong>
-                <p>Search course schedules, find instructors, calculate credits, and ask questions about academic documents. An optional local model writes answers with citations.</p>
-                <small>Node.js · PDF.js · llama.cpp</small>
-              </a>
+              <article class="portfolio-project featured-project">
+                <h4>IIT Hyderabad EE Academic Assistant</h4>
+                <p>Look up course schedules and instructors, plan credits, or ask questions about academic documents. Answers link back to their sources.</p>
+                <div class="project-actions">
+                  <a class="button button-bright" href="https://iith-electrical-chatbot.netlify.app/" target="_blank" rel="noopener">Try the chat demo <span aria-hidden="true">↗</span></a>
+                  <a class="button button-dark" href="https://github.com/Meowfessor96/iith-ee-academic-assistant" target="_blank" rel="noopener">Source code <span aria-hidden="true">↗</span></a>
+                </div>
+                <small>The live preview covers chat. The repository also includes the course browser and credit planner.</small>
+              </article>
             </div>
           </section>
           <section class="project-panel" id="projects-ml" aria-labelledby="title-ml">
@@ -598,12 +107,10 @@
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/KNN-Classifier" target="_blank" rel="noopener">
                 <strong>KNN Classifier <span aria-hidden="true">↗</span></strong>
                 <p>K-Nearest Neighbors algorithm implementation.</p>
-                <small>ML</small>
               </a>
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Binary-Classification-Using-Logistic-Regression" target="_blank" rel="noopener">
                 <strong>Binary Classification using Logistic Regression <span aria-hidden="true">↗</span></strong>
                 <p>Binary classification using logistic regression.</p>
-                <small>ML</small>
               </a>
             </div>
           </section>
@@ -613,32 +120,26 @@
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/ADC" target="_blank" rel="noopener">
                 <strong>5-bit SAR ADC <span aria-hidden="true">↗</span></strong>
                 <p>Successive Approximation Register ADC implementation.</p>
-                <small>Hardware</small>
               </a>
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/FM-transmitter" target="_blank" rel="noopener">
                 <strong>FM Audio Transmitter <span aria-hidden="true">↗</span></strong>
                 <p>Frequency modulation based audio transmission system.</p>
-                <small>Hardware</small>
               </a>
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Audio-amplifier" target="_blank" rel="noopener">
                 <strong>Audio Amplifier with Volume Control <span aria-hidden="true">↗</span></strong>
                 <p>Amplifier circuit with volume control capabilities.</p>
-                <small>Hardware</small>
               </a>
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/7-segment-digital-clock" target="_blank" rel="noopener">
                 <strong>7-segment Digital Clock <span aria-hidden="true">↗</span></strong>
                 <p>Digital time display using 7-segment LED components.</p>
-                <small>Hardware</small>
               </a>
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Mobile-DC-Charger" target="_blank" rel="noopener">
                 <strong>Mobile DC Charger (AC to DC Rectifier) <span aria-hidden="true">↗</span></strong>
                 <p>AC to DC rectifier and regulation for mobile charging.</p>
-                <small>Hardware</small>
               </a>
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Wireless-solar-mobile-charger" target="_blank" rel="noopener">
                 <strong>Solar Wireless Mobile Charger <span aria-hidden="true">↗</span></strong>
                 <p>Wireless charging system powered by solar energy.</p>
-                <small>Hardware</small>
               </a>
             </div>
           </section>
@@ -648,7 +149,6 @@
               <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Digital-noise-filter" target="_blank" rel="noopener">
                 <strong>Digital Noise Filter (NLMS Algorithm) <span aria-hidden="true">↗</span></strong>
                 <p>Implementation of NLMS adaptive filtering for noise reduction.</p>
-                <small>DSP</small>
               </a>
             </div>
           </section>
@@ -657,200 +157,13 @@
     </div>
   </section>
 
-  <!-- Contact & Footer (small) -->
-  <section id="contact" class="py-10 px-6 border-t border-gray-800">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-2xl font-semibold mb-4">Let's Connect</h3>
-      <div class="flex justify-center gap-4 mb-4">
-        <a href="https://github.com/Meowfessor96" class="px-4 py-2 bg-gray-800 rounded">GitHub ↗</a>
-      </div>
-      <p class="text-gray-400">© 2024 Mude Khusinadha Naik</p>
+
+  </main>
+  <footer class="site-footer">
+    <div class="frame footer-row">
+      <span>Mude Khusinadha Naik</span>
+      <div><a href="https://github.com/Meowfessor96">GitHub ↗</a><a href="#hero">Back to top ↑</a></div>
     </div>
-  </section>
-
-  <!-- Modal (reused by game) -->
-  <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
-    <div class="bg-gray-800 rounded-xl p-6 max-w-md w-full border border-gray-700">
-      <p id="modal-message" class="text-xl text-center mb-4"></p>
-      <button id="modal-close" class="w-full px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded text-white">OK</button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    // helper: open link in new tab
-    function openLink(url) {
-      window.open(url, '_blank', 'noopener');
-    }
-
-    // Feather icons
-    window.feather?.replace();
-
-    // Vanta background init
-    if (typeof VANTA !== 'undefined' && typeof THREE !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      VANTA.NET({
-        el: "#vanta-bg",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x3b82f6,
-        backgroundColor: 0x0f172a,
-        points: 12.00,
-        maxDistance: 22.00,
-        spacing: 18.00
-      });
-    }
-
-    // Skill panel toggles (expand/collapse)
-    function togglePanel(btn, panelId) {
-      const panel = document.getElementById(panelId);
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      if (expanded) {
-        // collapse
-        panel.style.maxHeight = '0';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.querySelector('i').style.transform = 'rotate(0deg)';
-      } else {
-        // expand: set maxHeight to scrollHeight for smooth transition
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-        btn.setAttribute('aria-expanded', 'true');
-        btn.querySelector('i').style.transform = 'rotate(180deg)';
-      }
-    }
-
-    // ---------- Tic-Tac-Toe Game Logic (drag-drop) ----------
-    const skillsContainer = document.getElementById('game-skills');
-    const initialSkillsHTML = skillsContainer ? skillsContainer.innerHTML : '';
-    let board = Array(9).fill('');
-    let draggedElem = null;
-    const cells = document.querySelectorAll('#game-board .cell');
-
-    // Add dragstart listeners for skill boxes
-    function initDragSources() {
-      document.querySelectorAll('#game-skills .skill-box').forEach(s => {
-        s.addEventListener('dragstart', e => {
-          draggedElem = s;
-          e.dataTransfer.setData('text/html', s.innerHTML);
-        });
-      });
-    }
-    initDragSources();
-
-    // Setup drop listeners on cells
-    cells.forEach(cell => {
-      cell.addEventListener('dragover', e => e.preventDefault());
-      cell.addEventListener('drop', e => {
-        e.preventDefault();
-        const idx = +cell.dataset.index;
-        if (board[idx] || !draggedElem) return;
-        const data = e.dataTransfer.getData('text/html');
-        board[idx] = 'X';
-        // place the dragged HTML and an X marker
-        cell.innerHTML = data + '<span class="absolute top-2 right-2 text-red-500 font-bold">X</span>';
-        draggedElem.remove();
-        draggedElem = null;
-
-        if (checkWin('X')) return showModal('Congratulations, you win!');
-        if (board.every(v => v)) return showModal("It's a draw!");
-
-        setTimeout(aiMove, 220);
-      });
-    });
-
-    function aiMove() {
-      const wins = [
-        [0,1,2],[3,4,5],[6,7,8],
-        [0,3,6],[1,4,7],[2,5,8],
-        [0,4,8],[2,4,6]
-      ];
-
-      // Try to win
-      for (let i = 0; i < 9; i++) {
-        if (!board[i]) {
-          board[i] = 'O';
-          if (checkWin('O')) return renderMove(i, 'O', true);
-          board[i] = '';
-        }
-      }
-
-      // Try to block player
-      for (let i = 0; i < 9; i++) {
-        if (!board[i]) {
-          board[i] = 'X';
-          if (checkWin('X')) {
-            board[i] = 'O';
-            return renderMove(i, 'O');
-          }
-          board[i] = '';
-        }
-      }
-
-      // Random move
-      const avail = board.map((v, i) => v === '' ? i : null).filter(i => i !== null);
-      if (avail.length === 0) return;
-      const idx = avail[Math.floor(Math.random() * avail.length)];
-      board[idx] = 'O';
-      renderMove(idx, 'O');
-
-      if (checkWin('O')) return showModal('AI wins!');
-      if (board.every(v => v)) return showModal("It's a draw!");
-    }
-
-    function renderMove(idx, player, showWin = false) {
-      const cell = cells[idx];
-      cell.innerHTML = `<span class="text-4xl font-bold ${player === 'O' ? 'text-purple-500' : 'text-red-500'}">${player}</span>`;
-      if (showWin) showModal('AI wins!');
-    }
-
-    function checkWin(p) {
-      const wins = [
-        [0,1,2],[3,4,5],[6,7,8],
-        [0,3,6],[1,4,7],[2,5,8],
-        [0,4,8],[2,4,6]
-      ];
-      return wins.some(c => c.every(i => board[i] === p));
-    }
-
-    function showModal(msg) {
-      document.getElementById('modal-message').textContent = msg;
-      document.getElementById('modal').classList.remove('hidden');
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    document.getElementById('modal-close').addEventListener('click', () => {
-      document.getElementById('modal').classList.add('hidden');
-      document.getElementById('modal').style.display = 'none';
-    });
-
-    // Reset game
-    document.getElementById('game-reset').addEventListener('click', resetGame);
-    function resetGame() {
-      board.fill('');
-      document.querySelectorAll('#game-board .cell').forEach(c => c.innerHTML = '');
-      skillsContainer.innerHTML = initialSkillsHTML;
-      initDragSources();
-    }
-
-    // Initialize drag listeners for the first time
-    initDragSources();
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-      });
-    });
-
-    // Small entry reveal animation (add 'show' to fade-up items)
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('show'));
-    });
-  </script>
+  </footer>
 </body>
 </html>
