@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Electrical engineering and software projects by Mude Khusinadha Naik, B.Tech student at IIT Hyderabad.">
+  <meta name="description" content="Electrical engineering and software projects by Khusinadha Naik, B.Tech student at IIT Hyderabad.">
   <meta name="theme-color" content="#101f1c">
-  <title>Mude Khusinadha Naik | Electrical Engineering &amp; Software</title>
+  <title>Khusinadha Naik | Electrical Engineering &amp; Software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="portfolio.css?v=2c4b0e1b">
-  <script src="site.js" defer></script>
-  <script src="project-wheel.js" defer></script>
+  <link rel="stylesheet" href="portfolio.css?v=8c1e7a39">
+  <script src="site.js?v=7ed203a2" defer></script>
+  <script src="project-wheel.js?v=b1dee904" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <nav class="frame topbar" aria-label="Main navigation">
-      <a class="wordmark" href="#hero" aria-label="Mude Khusinadha Naik, home"><span class="brand-mark" aria-hidden="true"></span><span>Mude K. Naik</span></a>
+      <a class="wordmark" href="#hero" aria-label="Khusinadha Naik, home"><span class="brand-mark" aria-hidden="true"></span><span>Khusinadha Naik</span></a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -33,7 +33,7 @@
       <div class="frame hero-layout">
         <div class="hero-content">
           <p class="section-label">Electrical Engineering · IIT Hyderabad</p>
-          <h1 id="hero-title">Mude<br>Khusinadha <em>Naik</em></h1>
+          <h1 id="hero-title">Khusinadha<br><em>Naik</em></h1>
           <p class="hero-description">I build circuits and software, from filtering noise in a signal to making course information easier to find.</p>
           <div class="hero-actions">
             <a class="button button-bright" href="#projects">Explore projects <span aria-hidden="true">↓</span></a>
@@ -77,20 +77,17 @@
 
   <section id="projects" class="page projects" data-section aria-labelledby="projects-heading">
     <div class="frame projects-layout reveal">
-      <div class="section-heading"><h2 id="projects-heading">Projects</h2><p>Pick a topic on the wheel to browse the projects.</p></div>
+      <div class="section-heading"><h2 id="projects-heading">Projects</h2><p id="project-instructions">Drag a topic to the center, or select it to open.</p></div>
       <div class="project-browser">
-        <div class="project-wheel" role="group" aria-label="Project topics" hidden>
-          <button type="button" class="wheel-topic" data-topic="Local AI" aria-controls="projects-rag" aria-pressed="false"><span>Local AI<small>1 project</small></span></button>
-          <button type="button" class="wheel-topic" data-topic="Machine learning" aria-controls="projects-ml" aria-pressed="false"><span>ML<small>2 projects</small></span></button>
-          <button type="button" class="wheel-topic" data-topic="Circuits" aria-controls="projects-circuits" aria-pressed="false"><span>Circuits<small>6 projects</small></span></button>
-          <button type="button" class="wheel-topic" data-topic="Signal processing" aria-controls="projects-dsp" aria-pressed="false"><span>DSP<small>1 project</small></span></button>
-          <div class="wheel-center" aria-live="polite"><strong></strong><small></small></div>
+        <div class="project-stage" hidden>
+          <div class="project-wheel"></div>
+          <div class="project-detail" id="project-detail" role="region" aria-label="Project description" aria-live="polite" hidden></div>
         </div>
-        <div>
-          <section class="project-panel" id="projects-rag" aria-labelledby="title-rag">
-            <h3 id="title-rag">Local AI</h3>
+        <div class="project-catalog">
+          <section class="project-panel" id="projects-rag" data-sector="rag" data-symbol="⌘" aria-labelledby="title-rag">
+            <h3 id="title-rag">AI &amp; Software</h3>
             <div class="project-entries">
-              <article class="portfolio-project featured-project">
+              <article class="portfolio-project featured-project" data-wheel-title="EE Assistant">
                 <h4>IIT Hyderabad EE Academic Assistant</h4>
                 <p>Look up course schedules and instructors, plan credits, or ask questions about academic documents. Answers link back to their sources.</p>
                 <div class="project-actions">
@@ -101,54 +98,54 @@
               </article>
             </div>
           </section>
-          <section class="project-panel" id="projects-ml" aria-labelledby="title-ml">
-            <h3 id="title-ml">Machine learning</h3>
+          <section class="project-panel" id="projects-ml" data-sector="ml" data-symbol="✣" aria-labelledby="title-ml">
+            <h3 id="title-ml">Machine Learning</h3>
             <div class="project-entries">
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/KNN-Classifier" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="KNN Classifier" href="https://github.com/Meowfessor96/Projects/tree/main/KNN-Classifier" target="_blank" rel="noopener">
                 <strong>KNN Classifier <span aria-hidden="true">↗</span></strong>
-                <p>K-Nearest Neighbors algorithm implementation.</p>
+                <p>An implementation of K-nearest neighbors that classifies a data point using the labels of nearby examples.</p>
               </a>
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Binary-Classification-Using-Logistic-Regression" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="Logistic Regression" href="https://github.com/Meowfessor96/Projects/tree/main/Binary-Classification-Using-Logistic-Regression" target="_blank" rel="noopener">
                 <strong>Binary Classification using Logistic Regression <span aria-hidden="true">↗</span></strong>
-                <p>Binary classification using logistic regression.</p>
+                <p>A logistic regression model that estimates the probability of an outcome and predicts one of two classes.</p>
               </a>
             </div>
           </section>
-          <section class="project-panel" id="projects-circuits" aria-labelledby="title-circuits">
+          <section class="project-panel" id="projects-circuits" data-sector="circuits" data-symbol="⊞" aria-labelledby="title-circuits">
             <h3 id="title-circuits">Circuits</h3>
             <div class="project-entries">
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/ADC" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="SAR ADC" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/ADC" target="_blank" rel="noopener">
                 <strong>5-bit SAR ADC <span aria-hidden="true">↗</span></strong>
-                <p>Successive Approximation Register ADC implementation.</p>
+                <p>A 5-bit successive-approximation ADC that uses comparator decisions to resolve the digital output one bit at a time.</p>
               </a>
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/FM-transmitter" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="FM Transmitter" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/FM-transmitter" target="_blank" rel="noopener">
                 <strong>FM Audio Transmitter <span aria-hidden="true">↗</span></strong>
-                <p>Frequency modulation based audio transmission system.</p>
+                <p>An audio transmitter that carries sound by varying the frequency of a radio carrier.</p>
               </a>
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Audio-amplifier" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="Audio Amp" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Audio-amplifier" target="_blank" rel="noopener">
                 <strong>Audio Amplifier with Volume Control <span aria-hidden="true">↗</span></strong>
-                <p>Amplifier circuit with volume control capabilities.</p>
+                <p>An audio amplifier circuit with adjustable output level for controlling listening volume.</p>
               </a>
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/7-segment-digital-clock" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="Digital Clock" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/7-segment-digital-clock" target="_blank" rel="noopener">
                 <strong>7-segment Digital Clock <span aria-hidden="true">↗</span></strong>
-                <p>Digital time display using 7-segment LED components.</p>
+                <p>A digital clock that displays time using seven-segment LEDs.</p>
               </a>
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Mobile-DC-Charger" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="DC Charger" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Mobile-DC-Charger" target="_blank" rel="noopener">
                 <strong>Mobile DC Charger (AC to DC Rectifier) <span aria-hidden="true">↗</span></strong>
-                <p>AC to DC rectifier and regulation for mobile charging.</p>
+                <p>A charger circuit that rectifies AC and regulates the resulting DC output.</p>
               </a>
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Wireless-solar-mobile-charger" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="Solar Charger" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Wireless-solar-mobile-charger" target="_blank" rel="noopener">
                 <strong>Solar Wireless Mobile Charger <span aria-hidden="true">↗</span></strong>
-                <p>Wireless charging system powered by solar energy.</p>
+                <p>A charger that uses solar energy to power a wireless charging circuit.</p>
               </a>
             </div>
           </section>
-          <section class="project-panel" id="projects-dsp" aria-labelledby="title-dsp">
-            <h3 id="title-dsp">Signal processing</h3>
+          <section class="project-panel" id="projects-dsp" data-sector="dsp" data-symbol="∿" aria-labelledby="title-dsp">
+            <h3 id="title-dsp">Signal Processing</h3>
             <div class="project-entries">
-              <a class="portfolio-project" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Digital-noise-filter" target="_blank" rel="noopener">
+              <a class="portfolio-project" data-wheel-title="Noise Filter" href="https://github.com/Meowfessor96/Projects/tree/main/Electrical_Core_Projects/Digital-noise-filter" target="_blank" rel="noopener">
                 <strong>Digital Noise Filter (NLMS Algorithm) <span aria-hidden="true">↗</span></strong>
-                <p>Implementation of NLMS adaptive filtering for noise reduction.</p>
+                <p>A digital noise filter based on the normalized least mean squares (NLMS) adaptive filtering algorithm.</p>
               </a>
             </div>
           </section>
@@ -161,7 +158,7 @@
   </main>
   <footer class="site-footer">
     <div class="frame footer-row">
-      <span>Mude Khusinadha Naik</span>
+      <span>Khusinadha Naik</span>
       <div><a href="https://github.com/Meowfessor96">GitHub ↗</a><a href="#hero">Back to top ↑</a></div>
     </div>
   </footer>

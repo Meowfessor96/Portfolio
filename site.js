@@ -35,7 +35,7 @@ function animateTo(top) {
     return
   }
 
-  const duration = Math.min(820, Math.max(460, 300 + Math.abs(distance) * .22))
+  const duration = Math.min(1050, Math.max(640, 410 + Math.abs(distance) * .27))
   const started = performance.now()
   function step(now) {
     const elapsed = Math.min(1, (now - started) / duration)
