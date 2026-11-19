@@ -86,9 +86,8 @@ button { font: inherit; }
 .wheel-layer:not([inert]) { z-index: 1; }
 .wheel-slice { --sector: #9bc79b; position: absolute; inset: 0; padding: 0; border: 0; background: color-mix(in srgb, var(--sector) 24%, #182c26); color: #fffdf0; cursor: pointer; transition: transform .26s cubic-bezier(.2,.75,.25,1), background-color .26s ease; }
 .wheel-slice[data-sector="rag"] { --sector: #c1e29b; }
-.wheel-slice[data-sector="ml"] { --sector: #92c0ad; }
-.wheel-slice[data-sector="circuits"] { --sector: #f4ba75; }
-.wheel-slice[data-sector="dsp"] { --sector: #de9a8f; }
+.wheel-slice[data-sector="digital"] { --sector: #f4ba75; }
+.wheel-slice[data-sector="signals"] { --sector: #de9a8f; }
 .wheel-layer[data-level="topics"] .wheel-slice { touch-action: none; cursor: grab; }
 .wheel-layer[data-level="projects"] .wheel-slice:nth-child(even) { background: color-mix(in srgb, var(--sector) 15%, #182c26); }
 .wheel-layer .wheel-slice:is(:hover, :focus-visible, .is-dragging, [aria-pressed="true"]) { z-index: 1; transform: scale(1.065); background: color-mix(in srgb, var(--sector) 41%, #192e27); }
@@ -100,11 +99,9 @@ button { font: inherit; }
 .wheel-slice:focus-visible .wheel-label { outline: 2px solid #fff8db; }
 .wheel-symbol { display: inline-block; color: var(--sector); font-family: var(--body); font-size: clamp(1.2rem, 5vw, 2.05rem); line-height: 1; }
 .wheel-slice[data-sector="rag"]:is(:hover,:focus-visible) .wheel-symbol { animation: software-turn .75s ease-in-out infinite alternate; }
-.wheel-slice[data-sector="ml"]:is(:hover,:focus-visible) .wheel-symbol { animation: learning-pulse .85s ease-in-out infinite; }
-.wheel-slice[data-sector="circuits"]:is(:hover,:focus-visible) .wheel-symbol { animation: circuits-flip .9s ease-in-out infinite alternate; }
-.wheel-slice[data-sector="dsp"]:is(:hover,:focus-visible) .wheel-symbol { animation: signal-wave .65s ease-in-out infinite alternate; }
+.wheel-slice[data-sector="digital"]:is(:hover,:focus-visible) .wheel-symbol { animation: circuits-flip .9s ease-in-out infinite alternate; }
+.wheel-slice[data-sector="signals"]:is(:hover,:focus-visible) .wheel-symbol { animation: signal-wave .65s ease-in-out infinite alternate; }
 @keyframes software-turn { to { transform: rotate(32deg) scale(1.13); } }
-@keyframes learning-pulse { 50% { transform: scale(1.34); filter: drop-shadow(0 0 5px currentColor); } }
 @keyframes circuits-flip { to { transform: perspective(70px) rotateY(42deg); filter: drop-shadow(0 0 3px currentColor); } }
 @keyframes signal-wave { from { transform: translateX(-3px) skewX(-12deg); } to { transform: translateX(3px) skewX(12deg) scaleY(1.36); } }
 .wheel-hub { position: absolute; inset: 30.5%; z-index: 3; display: grid; place-content: center; border: 1px solid #a4c9ad95; border-radius: 50%; background: #11241d; color: #f1f6e6; text-align: center; font: 700 clamp(.71rem, 2.2vw, 1rem) var(--heading); transition: background .25s ease, border-color .25s ease; }
